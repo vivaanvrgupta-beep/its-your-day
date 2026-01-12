@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday 💖</title>
+<title>Its Your Day 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -11,180 +11,270 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:radial-gradient(circle at top,#2b1055,#0f0c29);
-    min-height:100vh;
-    overflow:hidden;
-    color:white;
+  font-family:Poppins,sans-serif;
+  background:radial-gradient(circle at top,#2b1055,#0f0c29);
+  min-height:100vh;
+  overflow:hidden;
+  color:white;
 }
 
-/* PAGES */
 .page{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    visibility:hidden;
-    transition:1s;
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:1s;
 }
-.page.active{
-    opacity:1;
-    visibility:visible;
-}
+.page.active{opacity:1;visibility:visible}
 
 .content{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(25px);
-    border-radius:30px;
-    padding:3rem 4rem;
-    text-align:center;
-    box-shadow:0 40px 100px rgba(0,0,0,0.5);
-    max-width:900px;
-    width:90%;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(25px);
+  border-radius:30px;
+  padding:3rem 4rem;
+  text-align:center;
+  box-shadow:0 40px 100px rgba(0,0,0,.5);
+  max-width:900px;
+  width:90%;
 }
 
 .title{
-    font-size:3.2rem;
-    font-weight:800;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:1rem;
+  font-size:3.5rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.subtitle{opacity:.8}
+.subtitle{opacity:.8;margin-top:1rem}
 
-/* PARTICLES */
-.particles{position:fixed;inset:0;pointer-events:none}
-.particle{position:absolute;font-size:20px;animation:float 8s infinite ease-in-out;opacity:.7}
-@keyframes float{50%{transform:translateY(-120px) translateX(60px)}}
-
-/* COUNTDOWN */
-.countdown{display:flex;justify-content:center}
-.number{
-    font-size:10rem;
-    font-weight:800;
+.big-number{
+  font-size:10rem;
+  font-weight:800;
 }
 
-/* BIRTHDAY */
-.birthday-title{font-size:4rem;animation:floatSoft 3s infinite ease-in-out}
-@keyframes floatSoft{50%{transform:translateY(-12px)}}
-
-/* BUTTONS */
-.buttons{display:flex;gap:1.5rem;justify-content:center;margin-top:2rem}
+.btns{margin-top:2rem;display:flex;gap:1.5rem;justify-content:center}
 .btn{
-    padding:1rem 2.5rem;
-    border:none;
-    border-radius:999px;
-    font-size:1.2rem;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+  padding:1rem 2.5rem;
+  border:none;
+  border-radius:999px;
+  font-size:1.2rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
 }
 .btn:hover{transform:scale(1.1)}
-.btn-yes{background:#ff5fa2;color:white}
-.btn-no{background:#4facfe;color:white}
+.yes{background:#ff5fa2;color:white}
+.no{background:#4facfe;color:white}
 
-/* CAKE */
-.cake{position:relative;width:180px;height:220px;margin:auto;cursor:pointer}
-.cake-layer{position:absolute;left:0;width:100%;height:60px;border-radius:15px}
-.layer-1{bottom:0;background:#ff9a9e}
-.layer-2{bottom:65px;width:90%;left:5%;background:#fbc2eb}
-.layer-3{bottom:130px;width:80%;left:10%;background:#fddb92}
-.candle{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:10px;height:40px;background:#ffd700}
-.flame{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:20px;height:25px;background:radial-gradient(circle,#ff0,#f00);border-radius:50%;animation:flicker .3s infinite}
-@keyframes flicker{50%{transform:translateX(-50%) scale(.9)}}
+/* MESSAGE UNIVERSE */
+.universe{position:fixed;inset:0}
+.star{
+  position:absolute;
+  padding:.9rem 1.6rem;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(20px);
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:600;
+  animation:float 14s infinite ease-in-out;
+  transition:.3s;
+}
+.star:hover{
+  transform:scale(1.2);
+  background:rgba(255,255,255,.3);
+}
+
+@keyframes float{
+  50%{transform:translateY(-120px) translateX(80px)}
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:10;
+}
+.modal.show{opacity:1;visibility:visible}
+
+.modal-box{
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  padding:3rem;
+  border-radius:25px;
+  max-width:500px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+.modal-box h2{font-size:2.2rem;margin-bottom:1rem}
+.modal-box p{font-size:1.2rem;line-height:1.6}
+
+.close{
+  margin-top:2rem;
+  padding:.8rem 2rem;
+  border:none;
+  border-radius:999px;
+  background:#ff9a9e;
+  font-size:1rem;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
-<div class="particles" id="particles"></div>
-
-<!-- COUNTDOWN -->
-<section class="page active" id="page-countdown">
+<!-- 1 COUNTDOWN -->
+<section class="page active" id="countdown">
   <div class="content">
-    <h1 class="title">COUNTDOWN</h1>
+    <h1 class="title">COUNTDOWN ⏳</h1>
     <p class="subtitle">for the drunk panda 🐼</p>
-    <div class="countdown">
-      <div class="number" id="seconds">04</div>
+    <div class="big-number" id="cd1">04</div>
+  </div>
+</section>
+
+<!-- 2 BIRTHDAY -->
+<section class="page" id="birthday">
+  <div class="content">
+    <h1 class="title">HAPPY BIRTHDAY 🎉💖</h1>
+    <p class="subtitle" id="life"></p>
+  </div>
+</section>
+
+<!-- 3 QUESTION -->
+<section class="page" id="question">
+  <div class="content">
+    <h1 class="title">Did you enjoy it? ❓</h1>
+    <div class="btns">
+      <button class="btn yes">YES 💖</button>
+      <button class="btn no">NO 🙈</button>
     </div>
   </div>
 </section>
 
-<!-- BIRTHDAY -->
-<section class="page" id="page-birthday">
+<!-- 4 SUSPENSE -->
+<section class="page" id="suspense">
   <div class="content">
-    <h1 class="title birthday-title">HAPPY BIRTHDAY 🎉💖</h1>
+    <h1 class="title">One last surprise… 🎬</h1>
+    <div class="big-number" id="cd2">03</div>
   </div>
 </section>
 
-<!-- QUESTION -->
-<section class="page" id="page-question">
-  <div class="content">
-    <h1 class="title">Did you enjoy it?</h1>
-    <div class="buttons">
-      <button class="btn btn-yes">YES 💖</button>
-      <button class="btn btn-no">NO 🙈</button>
-    </div>
-  </div>
+<!-- 5 MESSAGE UNIVERSE -->
+<section class="page" id="universe">
+  <div class="universe" id="stars"></div>
 </section>
 
-<!-- CAKE -->
-<section class="page" id="page-cake">
-  <div class="content">
-    <h1 class="title">Make a wish 🎂</h1>
-    <div class="cake">
-      <div class="candle"><div class="flame"></div></div>
-      <div class="cake-layer layer-1"></div>
-      <div class="cake-layer layer-2"></div>
-      <div class="cake-layer layer-3"></div>
-    </div>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h2 id="modal-name"></h2>
+    <p id="modal-message"></p>
+    <button class="close" onclick="closeModal()">Close 💖</button>
   </div>
-</section>
+</div>
 
 <script>
-/* PARTICLES */
-const particles=document.getElementById("particles");
-["💖","✨","🌸","⭐"].forEach(e=>{
-  for(let i=0;i<10;i++){
-    let p=document.createElement("div");
-    p.className="particle";
-    p.innerText=e;
-    p.style.left=Math.random()*100+"%";
-    p.style.top=Math.random()*100+"%";
-    particles.appendChild(p);
-  }
-});
-
-/* PAGE SWITCH */
-const pages=document.querySelectorAll(".page");
-function showPage(id){
-  pages.forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+const pages={countdown,birthday,question,suspense,universe};
+function show(id){
+  Object.values(pages).forEach(p=>p.classList.remove("active"));
+  pages[id].classList.add("active");
 }
 
-/* COUNTDOWN FIX */
-let time=4;
-const seconds=document.getElementById("seconds");
-
-const timer=setInterval(()=>{
-  seconds.innerText=time.toString().padStart(2,"0");
-  time--;
-
-  if(time<0){
-    clearInterval(timer);
-    showPage("page-birthday");
-
-    setTimeout(()=>showPage("page-question"),4000);
-    setTimeout(()=>showPage("page-cake"),8000);
+/* 1 COUNTDOWN */
+let t=4;
+const cd1=document.getElementById("cd1");
+const timer1=setInterval(()=>{
+  cd1.innerText=String(t).padStart(2,"0");
+  t--;
+  if(t<0){
+    clearInterval(timer1);
+    show("birthday");
+    startLife();
+    setTimeout(()=>show("question"),4000);
   }
 },1000);
+
+/* 2 LIFE TIMER */
+function startLife(){
+  const birth=new Date("2004-01-01"); // CHANGE DOB
+  setInterval(()=>{
+    const diff=new Date()-birth;
+    const days=Math.floor(diff/86400000);
+    document.getElementById("life").innerText=
+      `You have lived ${days.toLocaleString()} beautiful days 💖`;
+  },1000);
+}
+
+/* 3 QUESTION */
+document.querySelector(".yes").onclick=()=>showSuspense();
+document.querySelector(".no").onclick=()=>showSuspense();
+
+/* 4 SUSPENSE */
+function showSuspense(){
+  show("suspense");
+  let s=3;
+  const cd2=document.getElementById("cd2");
+  const timer2=setInterval(()=>{
+    cd2.innerText=s;
+    s--;
+    if(s<0){
+      clearInterval(timer2);
+      showUniverse();
+    }
+  },1000);
+}
+
+/* 5 MESSAGE UNIVERSE */
+const messages={
+  Tushar:"Always there like a pillar 💪💖",
+  Niharika:"Your smile lights everything 🌸✨",
+  Vivaan:"Dream big, you’re meant for greatness 🚀",
+  Chahak:"Pure heart, pure soul 🤍",
+  Kunal:"Crazy memories, real friendship 😎",
+  Aarya:"Strength with kindness 💫",
+  Sanyam:"Calm, composed, supportive 🌿"
+};
+
+function showUniverse(){
+  show("universe");
+  const box=document.getElementById("stars");
+  box.innerHTML="";
+  Object.keys(messages).forEach(name=>{
+    const s=document.createElement("div");
+    s.className="star";
+    s.innerText=name;
+    s.style.left=Math.random()*80+"%";
+    s.style.top=Math.random()*80+"%";
+    s.onclick=()=>{
+      modalName.innerText=name;
+      modalMsg.innerText=messages[name];
+      modal.classList.add("show");
+    };
+    box.appendChild(s);
+  });
+}
+
+const modal=document.getElementById("modal");
+const modalName=document.getElementById("modal-name");
+const modalMsg=document.getElementById("modal-message");
+
+function closeModal(){
+  modal.classList.remove("show");
+}
 </script>
 
 </body>
 </html>
+
 
 
