@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💖</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* BODY */
+body{
+    font-family:'Poppins',sans-serif;
+    background:radial-gradient(circle at top,#2b1055,#0f0c29);
+    min-height:100vh;
+    overflow:hidden;
+    color:white;
+}
+
+/* PAGE */
+.page{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:1s;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* GLASS CONTENT */
+.content{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(25px);
+    border-radius:30px;
+    padding:3rem 4rem;
+    text-align:center;
+    box-shadow:0 40px 100px rgba(0,0,0,0.5);
+    max-width:900px;
+    width:90%;
+}
+
+/* TITLES */
+.title{
+    font-size:3.2rem;
+    font-weight:800;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:1rem;
+}
+
+.subtitle{
+    font-weight:300;
+    opacity:.85;
+}
+
+/* PARTICLES */
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.particle{
+    position:absolute;
+    font-size:20px;
+    animation:float 8s infinite ease-in-out;
+    opacity:.7;
+}
+
+@keyframes float{
+    50%{transform:translateY(-120px) translateX(60px)}
+}
+
+/* COUNTDOWN */
+.countdown{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.number-display{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    padding:1.5rem 2rem;
+    border-radius:25px;
+    min-width:150px;
+    box-shadow:inset 0 0 20px rgba(255,255,255,.15),
+               0 20px 40px rgba(0,0,0,.4);
+}
+
+.number{
+    font-size:6rem;
+    font-weight:700;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.label{
+    margin-top:.5rem;
+    letter-spacing:2px;
+    font-size:.8rem;
+    opacity:.8;
+}
+
+/* FINAL COUNT */
+.final-number{
+    font-size:14rem;
+    font-weight:800;
+    animation:scaleIn 1s ease;
+}
+
+@keyframes scaleIn{
+    from{transform:scale(0);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+/* BIRTHDAY */
+.birthday-title{
+    font-size:4rem;
+    animation:floatSoft 3s infinite ease-in-out;
+}
+
+@keyframes floatSoft{
+    50%{transform:translateY(-12px)}
+}
+
+.life-stats{
+    font-size:1.4rem;
+    margin-top:1rem;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:1.5rem;
+    justify-content:center;
+    margin-top:2rem;
+}
+
+.btn{
+    padding:1rem 2.5rem;
+    border:none;
+    border-radius:999px;
+    font-size:1.2rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-yes{
+    background:linear-gradient(135deg,#f093fb,#f5576c);
+    color:white;
+}
+
+.btn-no{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    color:white;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* CAKE */
+.cake{
+    position:relative;
+    width:180px;
+    height:220px;
+    margin:auto;
+    cursor:pointer;
+}
+
+.cake-layer{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:60px;
+    border-radius:15px;
+}
+
+.layer-1{bottom:0;background:linear-gradient(135deg,#ff9a9e,#fad0c4)}
+.layer-2{bottom:65px;width:90%;left:5%;background:linear-gradient(135deg,#fbc2eb,#a6c1ee)}
+.layer-3{bottom:130px;width:80%;left:10%;background:linear-gradient(135deg,#fddb92,#d1fdff)}
+
+.candle{
+    position:absolute;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:10px;
+    height:40px;
+    background:#ffd700;
+    border-radius:5px;
+}
+
+.flame{
+    position:absolute;
+    top:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:20px;
+    height:25px;
+    background:radial-gradient(circle,#ff0,#f00);
+    border-radius:50%;
+    animation:flicker .3s infinite;
+}
+
+@keyframes flicker{
+    50%{transform:translateX(-50%) scale(.9)}
+}
+
+/* FLOATING NAMES */
+.floating-name{
+    position:absolute;
+    padding:.8rem 1.5rem;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    border-radius:999px;
+    cursor:pointer;
+    animation:float 10s infinite;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.4s;
+}
+
+.modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-content{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:3rem;
+    border-radius:25px;
+    max-width:500px;
+}
+
+.modal-close{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+/* CURSOR GLOW */
+</style>
+</head>
+
+<body>
+
+<div class="particles" id="particles"></div>
+
+<!-- PAGES -->
+<section class="page active" id="page-countdown">
+<div class="content">
+<h1 class="title">COUNTDOWN</h1>
+<p class="subtitle">for the drunk panda 🐼</p>
+
+<div class="countdown">
+<div><div class="number-display"><span class="number" id="seconds">04</span></div><div class="label">SECONDS</div></div>
+</div>
+</div>
+</section>
+
+<section class="page" id="page-birthday">
+<div class="content">
+<h1 class="title birthday-title">HAPPY BIRTHDAY 🎉💖</h1>
+<p class="life-stats" id="life-stats"></p>
+</div>
+</section>
+
+<section class="page" id="page-question">
+<div class="content">
+<h1 class="title">Did you enjoy it?</h1>
+<div class="buttons">
+<button class="btn btn-yes">YES 💖</button>
+<button class="btn btn-no">NO 🙈</button>
+</div>
+</div>
+</section>
+
+<section class="page" id="page-cake">
+<div class="content">
+<h1 class="title">Make a wish 🎂</h1>
+<div class="cake">
+<div class="candle"><div class="flame"></div></div>
+<div class="cake-layer layer-1"></div>
+<div class="cake-layer layer-2"></div>
+<div class="cake-layer layer-3"></div>
+</div>
+</div>
+</section>
+
+<script>
+/* PARTICLES */
+const particles=document.getElementById("particles");
+["💖","✨","🌸","⭐"].forEach(e=>{
+for(let i=0;i<10;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.innerText=e;
+p.style.left=Math.random()*100+"%";
+p.style.top=Math.random()*100+"%";
+particles.appendChild(p);
+}});
+
+/* CURSOR GLOW */
+document.addEventListener("mousemove",e=>{
+let g=document.createElement("div");
+g.style.position="fixed";
+g.style.left=e.clientX+"px";
+g.style.top=e.clientY+"px";
+g.style.width="10px";
+g.style.height="10px";
+g.style.borderRadius="50%";
+g.style.background="rgba(255,182,193,.6)";
+g.style.filter="blur(12px)";
+g.style.pointerEvents="none";
+document.body.appendChild(g);
+setTimeout(()=>g.remove(),300);
+});
+</script>
+
+</body>
+</html> 
