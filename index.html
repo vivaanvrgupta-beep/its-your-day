@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy Birthday 💖</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎉</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Poppins,sans-serif;
   background:radial-gradient(circle at top,#2b1055,#0f0c29);
-  min-height:100vh;
+  height:100vh;
   overflow:hidden;
   color:white;
 }
@@ -25,48 +25,41 @@ body{
   justify-content:center;
   opacity:0;
   visibility:hidden;
-  transition:.8s;
+  transition:.6s;
 }
 .page.active{opacity:1;visibility:visible}
 
-.content{
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(25px);
-  border-radius:30px;
+.card{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(20px);
   padding:3rem;
+  border-radius:30px;
   text-align:center;
   width:90%;
-  max-width:800px;
+  max-width:700px;
 }
 
-.title{
-  font-size:3rem;
+h1{
+  font-size:2.8rem;
   font-weight:800;
   background:linear-gradient(135deg,#ff9a9e,#fad0c4);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.big-number{
+.big{
   font-size:6rem;
   font-weight:800;
 }
 
-.buttons{
-  display:flex;
-  gap:1.5rem;
-  justify-content:center;
-  margin-top:2rem;
-}
-
 button{
+  margin:1rem;
   padding:1rem 2.5rem;
   border:none;
   border-radius:999px;
-  font-size:1.2rem;
+  font-size:1.1rem;
   cursor:pointer;
 }
-
 .yes{background:#f5576c;color:white}
 .no{background:#4facfe;color:white}
 
@@ -83,33 +76,20 @@ button{
 .l1{background:#ff9a9e}
 .l2{background:#fad0c4;width:85%}
 .l3{background:#fbc2eb;width:70%}
-.candle{
-  width:10px;height:40px;background:gold;margin:auto;
-}
-.flame{
-  width:20px;height:20px;
-  background:radial-gradient(circle,#ff0,#f00);
-  border-radius:50%;
-  margin:auto;
-  animation:flicker .3s infinite;
-}
-@keyframes flicker{50%{transform:scale(.8)}}
 
-/* Universe */
 .name{
   position:absolute;
-  padding:.7rem 1.5rem;
+  padding:.6rem 1.4rem;
   background:rgba(255,255,255,.15);
   border-radius:999px;
   cursor:pointer;
-  animation:float 10s infinite linear;
+  animation:float 10s linear infinite;
 }
 @keyframes float{
-  from{transform:translateY(0)}
+  from{transform:translateY(110vh)}
   to{transform:translateY(-120vh)}
 }
 
-/* Modal */
 .modal{
   position:fixed;
   inset:0;
@@ -127,71 +107,48 @@ button{
   padding:2rem;
   border-radius:20px;
 }
-
-/* Glitter */
-.glitter{
-  position:fixed;
-  width:8px;height:8px;
-  border-radius:50%;
-  background:rgba(255,255,255,.8);
-  pointer-events:none;
-  animation:fade .6s forwards;
-}
-@keyframes fade{to{opacity:0;transform:scale(2)}}
-
-/* Fireworks */
-.fire{
-  position:fixed;
-  width:6px;height:6px;
-  border-radius:50%;
-  background:gold;
-  animation:boom 1s forwards;
-}
-@keyframes boom{
-  to{transform:translate(var(--x),var(--y));opacity:0}
-}
 </style>
 </head>
 
 <body>
 
-<!-- PAGES -->
+<!-- PAGE 1 -->
 <div class="page active" id="p0">
-  <div class="content">
-    <h1 class="title">Countdown 🐼</h1>
-    <div class="big-number" id="count">4</div>
+  <div class="card">
+    <h1>Countdown 🐼</h1>
+    <div class="big" id="count">4</div>
   </div>
 </div>
 
+<!-- PAGE 2 -->
 <div class="page" id="p1">
-  <div class="content">
-    <h1 class="title">Happy Birthday 🎉💖</h1>
+  <div class="card">
+    <h1>Happy Birthday 🎉💖</h1>
   </div>
 </div>
 
+<!-- PAGE 3 -->
 <div class="page" id="p2">
-  <div class="content">
-    <h1 class="title">Did you enjoy it?</h1>
-    <div class="buttons">
-      <button class="yes" onclick="next()">YES 💖</button>
-      <button class="no" onclick="next()">NO 🙈</button>
-    </div>
+  <div class="card">
+    <h1>Did you enjoy it?</h1>
+    <button class="yes" onclick="goNext()">YES 💖</button>
+    <button class="no" onclick="goNext()">NO 🙈</button>
   </div>
 </div>
 
+<!-- PAGE 4 -->
 <div class="page" id="p3">
-  <div class="content">
-    <h1 class="title">One last surprise…</h1>
-    <div class="big-number" id="final">3</div>
+  <div class="card">
+    <h1>One last surprise…</h1>
+    <div class="big" id="final">3</div>
   </div>
 </div>
 
+<!-- PAGE 5 -->
 <div class="page" id="p4">
-  <div class="content">
-    <h1 class="title">Make a wish 🎂</h1>
+  <div class="card">
+    <h1>Make a wish 🎂</h1>
     <div class="cake" onclick="openUniverse()">
-      <div class="candle"></div>
-      <div class="flame"></div>
       <div class="layer l1"></div>
       <div class="layer l2"></div>
       <div class="layer l3"></div>
@@ -199,6 +156,7 @@ button{
   </div>
 </div>
 
+<!-- PAGE 6 -->
 <div class="page" id="p5"></div>
 
 <div class="modal" id="modal">
@@ -207,92 +165,77 @@ button{
 
 <script>
 const pages=document.querySelectorAll(".page");
-let i=0;
-function show(n){
-  pages[i].classList.remove("active");
-  i=n;
-  pages[i].classList.add("active");
-}
-function next(){show(i+1)}
+let page=0;
 
-/* Countdown */
+function show(n){
+  pages[page].classList.remove("active");
+  page=n;
+  pages[page].classList.add("active");
+}
+
+function goNext(){ show(page+1); }
+
+/* STEP 1: COUNTDOWN */
 let c=4;
-let ct=setInterval(()=>{
+const ct=setInterval(()=>{
   c--;
   count.innerText=c;
-  if(c===0){clearInterval(ct);setTimeout(()=>show(1),600)}
+  if(c===0){
+    clearInterval(ct);
+    setTimeout(()=>show(1),600);
+  }
 },1000);
 
-/* Auto pages */
+/* STEP 2: AUTO TO QUESTION */
 setTimeout(()=>show(2),3500);
 
-/* Suspense */
+/* STEP 3: SUSPENSE */
 let f=3;
-let ft=setInterval(()=>{
+const st=setInterval(()=>{
   final.innerText=f;
-  if(f===0){clearInterval(ft);setTimeout(()=>show(4),600)}
+  if(f===0){
+    clearInterval(st);
+    setTimeout(()=>show(4),600);
+  }
   f--;
 },1000);
 
-/* Universe */
+/* STEP 4: UNIVERSE */
 function openUniverse(){
   show(5);
-  fireworks();
-  names();
+  spawnNames();
 }
 
-function names(){
+function spawnNames(){
   const msgs={
     Tushar:"Bro for life 💪",
-    Niharika:"Pure warmth ✨",
+    Niharika:"Warmest soul ✨",
     Vivaan:"Main character 😎",
     Chahak:"Sunshine 🌸",
     Kunal:"Always solid 🤍",
-    Aarya:"Smile forever 💖",
+    Aarya:"Pure smile 💖",
     Sanyam:"Silent strength 😌"
   };
-  Object.keys(msgs).forEach(n=>{
-    let d=document.createElement("div");
-    d.className="name";
-    d.innerText=n;
-    d.style.left=Math.random()*80+"%";
-    d.style.top="100%";
-    d.onclick=()=>popup(msgs[n]);
-    document.body.appendChild(d);
+
+  Object.keys(msgs).forEach(name=>{
+    let n=document.createElement("div");
+    n.className="name";
+    n.innerText=name;
+    n.style.left=Math.random()*80+"%";
+    n.onclick=()=>popup(msgs[name]);
+    document.body.appendChild(n);
   });
 }
 
-function popup(t){
-  modalText.innerText=t;
+function popup(text){
+  modalText.innerText=text;
   modal.classList.add("show");
   setTimeout(()=>modal.classList.remove("show"),2500);
 }
-
-/* Fireworks */
-function fireworks(){
-  for(let i=0;i<80;i++){
-    let f=document.createElement("div");
-    f.className="fire";
-    f.style.left="50%";
-    f.style.top="50%";
-    f.style.setProperty("--x",(Math.random()*400-200)+"px");
-    f.style.setProperty("--y",(Math.random()*400-200)+"px");
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1000);
-  }
-}
-
-/* Glitter trail */
-document.addEventListener("mousemove",e=>{
-  let g=document.createElement("div");
-  g.className="glitter";
-  g.style.left=e.clientX+"px";
-  g.style.top=e.clientY+"px";
-  document.body.appendChild(g);
-  setTimeout(()=>g.remove(),600);
-});
 </script>
 
 </body>
 </html>
+
+
 
