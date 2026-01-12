@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Happy Birthday 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Poppins,sans-serif;
   background:radial-gradient(circle at top,#2b1055,#0f0c29);
-  height:100vh;
+  min-height:100vh;
   overflow:hidden;
   color:white;
 }
@@ -35,8 +35,8 @@ body{
   border-radius:30px;
   padding:3rem;
   text-align:center;
-  max-width:900px;
   width:90%;
+  max-width:800px;
 }
 
 .title{
@@ -47,47 +47,69 @@ body{
   -webkit-text-fill-color:transparent;
 }
 
-.number{
-  font-size:8rem;
+.big-number{
+  font-size:6rem;
   font-weight:800;
 }
 
-.btn{
+.buttons{
+  display:flex;
+  gap:1.5rem;
+  justify-content:center;
   margin-top:2rem;
+}
+
+button{
   padding:1rem 2.5rem;
   border:none;
   border-radius:999px;
-  font-size:1.1rem;
+  font-size:1.2rem;
   cursor:pointer;
-  background:linear-gradient(135deg,#f093fb,#f5576c);
-  color:white;
 }
+
+.yes{background:#f5576c;color:white}
+.no{background:#4facfe;color:white}
 
 .cake{
-  width:180px;
-  height:220px;
   margin:auto;
+  width:200px;
   cursor:pointer;
 }
-.layer{height:60px;border-radius:15px;margin:10px auto}
+.layer{
+  height:50px;
+  border-radius:15px;
+  margin:8px auto;
+}
 .l1{background:#ff9a9e}
-.l2{background:#fad0c4;width:80%}
-.l3{background:#fbc2eb;width:60%}
+.l2{background:#fad0c4;width:85%}
+.l3{background:#fbc2eb;width:70%}
+.candle{
+  width:10px;height:40px;background:gold;margin:auto;
+}
+.flame{
+  width:20px;height:20px;
+  background:radial-gradient(circle,#ff0,#f00);
+  border-radius:50%;
+  margin:auto;
+  animation:flicker .3s infinite;
+}
+@keyframes flicker{50%{transform:scale(.8)}}
 
-.floating-name{
+/* Universe */
+.name{
   position:absolute;
-  padding:.7rem 1.4rem;
-  border-radius:999px;
+  padding:.7rem 1.5rem;
   background:rgba(255,255,255,.15);
-  backdrop-filter:blur(20px);
-  animation:float 10s infinite linear;
+  border-radius:999px;
   cursor:pointer;
+  animation:float 10s infinite linear;
 }
 @keyframes float{
-  50%{transform:translateY(-120px)}
+  from{transform:translateY(0)}
+  to{transform:translateY(-120vh)}
 }
 
-/* MODAL */
+/* Modal */
 .modal{
   position:fixed;
   inset:0;
@@ -97,43 +119,36 @@ body{
   justify-content:center;
   opacity:0;
   visibility:hidden;
-  transition:.4s;
+  transition:.3s;
 }
 .modal.show{opacity:1;visibility:visible}
-.modal-content{
-  background:linear-gradient(135deg,#667eea,#764ba2);
+.modal-box{
+  background:#764ba2;
   padding:2rem;
   border-radius:20px;
 }
 
-/* FIREWORKS */
-.firework{
-  position:fixed;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  pointer-events:none;
-  animation:explode 1s ease-out forwards;
-}
-@keyframes explode{
-  to{
-    transform:translate(var(--x),var(--y)) scale(0);
-    opacity:0;
-  }
-}
-
-/* GLITTER */
+/* Glitter */
 .glitter{
   position:fixed;
-  width:8px;
-  height:8px;
-  background:radial-gradient(circle,#fff,#ff69b4);
+  width:8px;height:8px;
   border-radius:50%;
+  background:rgba(255,255,255,.8);
   pointer-events:none;
   animation:fade .6s forwards;
 }
-@keyframes fade{
-  to{opacity:0;transform:scale(2)}
+@keyframes fade{to{opacity:0;transform:scale(2)}}
+
+/* Fireworks */
+.fire{
+  position:fixed;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:gold;
+  animation:boom 1s forwards;
+}
+@keyframes boom{
+  to{transform:translate(var(--x),var(--y));opacity:0}
 }
 </style>
 </head>
@@ -141,138 +156,133 @@ body{
 <body>
 
 <!-- PAGES -->
-<section class="page active">
+<div class="page active" id="p0">
   <div class="content">
-    <h1 class="title">COUNTDOWN</h1>
-    <div class="number" id="count">04</div>
+    <h1 class="title">Countdown 🐼</h1>
+    <div class="big-number" id="count">4</div>
   </div>
-</section>
+</div>
 
-<section class="page">
+<div class="page" id="p1">
   <div class="content">
-    <h1 class="title">HAPPY BIRTHDAY 🎉</h1>
+    <h1 class="title">Happy Birthday 🎉💖</h1>
   </div>
-</section>
+</div>
 
-<section class="page">
+<div class="page" id="p2">
   <div class="content">
     <h1 class="title">Did you enjoy it?</h1>
-    <button class="btn" onclick="next()">YES 💖</button>
-  </div>
-</section>
-
-<section class="page">
-  <div class="content">
-    <h1 class="title">One last surprise…</h1>
-    <div class="number" id="final">3</div>
-  </div>
-</section>
-
-<section class="page">
-  <div class="content">
-    <h1 class="title">Make a wish 🎂</h1>
-    <div class="cake" onclick="goUniverse()">
-      <div class="layer l3"></div>
-      <div class="layer l2"></div>
-      <div class="layer l1"></div>
+    <div class="buttons">
+      <button class="yes" onclick="next()">YES 💖</button>
+      <button class="no" onclick="next()">NO 🙈</button>
     </div>
   </div>
-</section>
+</div>
 
-<section class="page">
+<div class="page" id="p3">
   <div class="content">
-    <h1 class="title">Message Universe 💖</h1>
+    <h1 class="title">One last surprise…</h1>
+    <div class="big-number" id="final">3</div>
   </div>
-</section>
+</div>
 
-<!-- MODAL -->
+<div class="page" id="p4">
+  <div class="content">
+    <h1 class="title">Make a wish 🎂</h1>
+    <div class="cake" onclick="openUniverse()">
+      <div class="candle"></div>
+      <div class="flame"></div>
+      <div class="layer l1"></div>
+      <div class="layer l2"></div>
+      <div class="layer l3"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="p5"></div>
+
 <div class="modal" id="modal">
-  <div class="modal-content" id="modalText"></div>
+  <div class="modal-box" id="modalText"></div>
 </div>
 
 <script>
 const pages=document.querySelectorAll(".page");
-let current=0;
-function show(i){
-  pages[current].classList.remove("active");
-  current=i;
-  pages[current].classList.add("active");
+let i=0;
+function show(n){
+  pages[i].classList.remove("active");
+  i=n;
+  pages[i].classList.add("active");
 }
-function next(){show(current+1)}
+function next(){show(i+1)}
 
 /* Countdown */
 let c=4;
-const ce=document.getElementById("count");
-const cd=setInterval(()=>{
+let ct=setInterval(()=>{
   c--;
-  ce.innerText="0"+c;
-  if(c===0){clearInterval(cd);setTimeout(()=>show(1),500)}
+  count.innerText=c;
+  if(c===0){clearInterval(ct);setTimeout(()=>show(1),600)}
 },1000);
 
-/* Auto flow */
-setTimeout(()=>show(2),4500);
+/* Auto pages */
+setTimeout(()=>show(2),3500);
 
 /* Suspense */
 let f=3;
-const fe=document.getElementById("final");
-const sc=setInterval(()=>{
-  fe.innerText=f;
-  if(f===0){clearInterval(sc);setTimeout(()=>show(4),700)}
+let ft=setInterval(()=>{
+  final.innerText=f;
+  if(f===0){clearInterval(ft);setTimeout(()=>show(4),600)}
   f--;
 },1000);
 
 /* Universe */
-function goUniverse(){
+function openUniverse(){
   show(5);
-  createNames();
-  setInterval(fireworkBurst,1200);
+  fireworks();
+  names();
 }
 
-/* Messages */
-const msgs={
-  Tushar:"Bro forever 💪",
-  Niharika:"Pure warmth ✨",
-  Vivaan:"Main character 😎",
-  Chahak:"Sunshine 🌸",
-  Kunal:"Always real 🤍",
-  Aarya:"Smile queen 💖",
-  Sanyam:"Silent strength 😌"
-};
-
-function createNames(){
+function names(){
+  const msgs={
+    Tushar:"Bro for life 💪",
+    Niharika:"Pure warmth ✨",
+    Vivaan:"Main character 😎",
+    Chahak:"Sunshine 🌸",
+    Kunal:"Always solid 🤍",
+    Aarya:"Smile forever 💖",
+    Sanyam:"Silent strength 😌"
+  };
   Object.keys(msgs).forEach(n=>{
     let d=document.createElement("div");
-    d.className="floating-name";
+    d.className="name";
     d.innerText=n;
     d.style.left=Math.random()*80+"%";
-    d.style.top=Math.random()*80+"%";
-    d.onclick=()=>showMsg(msgs[n]);
+    d.style.top="100%";
+    d.onclick=()=>popup(msgs[n]);
     document.body.appendChild(d);
   });
 }
 
-function showMsg(t){
-  modal.classList.add("show");
+function popup(t){
   modalText.innerText=t;
+  modal.classList.add("show");
   setTimeout(()=>modal.classList.remove("show"),2500);
 }
 
-/* FIREWORKS */
-function fireworkBurst(){
-  for(let i=0;i<20;i++){
+/* Fireworks */
+function fireworks(){
+  for(let i=0;i<80;i++){
     let f=document.createElement("div");
-    f.className="firework";
-    f.style.left=Math.random()*100+"%";
-    f.style.top=Math.random()*100+"%";
-    f.style.background=`hsl(${Math.random()*360},100%,70%)`;
-    f.style.setProperty("--x",(Math.random()*200-100)+"px");
-    f.style.setProperty("--y",(Math.random()*200-100)+"px");
+    f.className="fire";
+    f.style.left="50%";
+    f.style.top="50%";
+    f.style.setProperty("--x",(Math.random()*400-200)+"px");
+    f.style.setProperty("--y",(Math.random()*400-200)+"px");
     document.body.appendChild(f);
     setTimeout(()=>f.remove(),1000);
   }
 }
 
-/* GLITTER CURSOR */
+/* Glitter trail */
 document.addEventListener("mousemove",e=>{
   let g=document.createElement("div");
   g.className="glitter";
@@ -285,5 +295,4 @@ document.addEventListener("mousemove",e=>{
 
 </body>
 </html>
-
 
