@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Happy Birthday 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -10,118 +10,110 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-    font-family:'Poppins',sans-serif;
-    background:radial-gradient(circle at top,#2b1055,#0f0c29);
-    min-height:100vh;
-    overflow:hidden;
-    color:white;
+  font-family:Poppins,sans-serif;
+  background:radial-gradient(circle at top,#2b1055,#0f0c29);
+  min-height:100vh;
+  overflow:hidden;
+  color:white;
 }
-
-/* PAGES */
 .page{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    visibility:hidden;
-    transition:1s;
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:1s;
 }
-.page.active{
-    opacity:1;
-    visibility:visible;
-}
-
+.page.active{opacity:1;visibility:visible}
 .content{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(25px);
-    border-radius:30px;
-    padding:3rem 4rem;
-    text-align:center;
-    box-shadow:0 40px 100px rgba(0,0,0,0.5);
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(25px);
+  border-radius:30px;
+  padding:3rem 4rem;
+  text-align:center;
+  max-width:900px;
+  width:90%;
 }
-
 .title{
-    font-size:3.2rem;
-    font-weight:800;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:1rem;
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+.subtitle{opacity:.8;margin-bottom:1rem}
 
-.count-number{
-    font-size:8rem;
-    font-weight:800;
-}
-
-.buttons{
-    display:flex;
-    gap:1.5rem;
-    justify-content:center;
-}
+.number{font-size:8rem;font-weight:800}
 .btn{
-    padding:1rem 2.5rem;
-    border:none;
-    border-radius:999px;
-    font-size:1.2rem;
-    font-weight:600;
-    cursor:pointer;
+  padding:1rem 2.5rem;
+  border-radius:999px;
+  border:none;
+  font-size:1.2rem;
+  cursor:pointer;
 }
-.btn-yes{background:#ff6b81;color:white}
-.btn-no{background:#70a1ff;color:white}
+.btn-yes{background:#f5576c;color:white}
+.btn-no{background:#4facfe;color:white}
 
-/* MESSAGE UNIVERSE */
-.universe{
-    position:fixed;
-    inset:0;
+.cake{
+  width:200px;
+  margin:auto;
+  cursor:pointer;
 }
-.name{
-    position:absolute;
-    padding:.8rem 1.5rem;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(20px);
-    border-radius:999px;
-    cursor:pointer;
-    animation:float 10s infinite alternate ease-in-out;
+.layer{
+  height:60px;
+  border-radius:15px;
+  margin:8px 0;
 }
+.l1{background:#ff9a9e}
+.l2{background:#fad0c4}
+.l3{background:#fbc2eb}
+.candle{
+  width:10px;
+  height:40px;
+  background:gold;
+  margin:auto;
+}
+.flame{
+  width:20px;
+  height:20px;
+  background:radial-gradient(circle,yellow,red);
+  border-radius:50%;
+  margin:auto;
+  animation:flicker .3s infinite;
+}
+@keyframes flicker{50%{transform:scale(.9)}}
 
+.floating-name{
+  position:absolute;
+  padding:.8rem 1.5rem;
+  background:rgba(255,255,255,.15);
+  border-radius:999px;
+  cursor:pointer;
+  animation:float 10s infinite;
+}
 @keyframes float{
-    from{transform:translateY(0)}
-    to{transform:translateY(-120px)}
+  50%{transform:translateY(-120px) translateX(80px)}
 }
 
-/* MODAL */
 .modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.8);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    visibility:hidden;
-    transition:.4s;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
 }
-.modal.show{
-    opacity:1;
-    visibility:visible;
-}
+.modal.show{opacity:1;visibility:visible}
 .modal-content{
-    background:linear-gradient(135deg,#667eea,#764ba2);
-    padding:2.5rem;
-    border-radius:25px;
-    max-width:500px;
-    text-align:center;
-}
-.modal-content button{
-    margin-top:1.5rem;
-    padding:.7rem 2rem;
-    border:none;
-    border-radius:999px;
-    font-weight:600;
-    cursor:pointer;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  padding:2rem;
+  border-radius:25px;
+  max-width:400px;
 }
 </style>
 </head>
@@ -129,120 +121,121 @@ body{
 <body>
 
 <!-- PAGE 1 -->
-<section class="page active" id="p1">
-<div class="content">
-<h1 class="title">COUNTDOWN</h1>
-<div class="count-number" id="count">4</div>
-</div>
+<section class="page active">
+  <div class="content">
+    <h1 class="title">COUNTDOWN ⏳</h1>
+    <div class="number" id="count">04</div>
+  </div>
 </section>
 
 <!-- PAGE 2 -->
-<section class="page" id="p2">
-<div class="content">
-<h1 class="title">HAPPY BIRTHDAY 🎉💖</h1>
-<p>You have successfully survived another year 😌</p>
-</div>
+<section class="page">
+  <div class="content">
+    <h1 class="title">HAPPY BIRTHDAY 🎉💖</h1>
+    <p>You survived another year 😌</p>
+  </div>
 </section>
 
 <!-- PAGE 3 -->
-<section class="page" id="p3">
-<div class="content">
-<h1 class="title">Did you enjoy it?</h1>
-<div class="buttons">
-<button class="btn btn-yes">YES 💖</button>
-<button class="btn btn-no">NO 🙈</button>
-</div>
-</div>
+<section class="page">
+  <div class="content">
+    <h1 class="title">Did you enjoy it?</h1><br>
+    <button class="btn btn-yes" onclick="next()">YES 💖</button>
+    <button class="btn btn-no" onclick="next()">NO 🙈</button>
+  </div>
 </section>
 
 <!-- PAGE 4 -->
-<section class="page" id="p4">
-<div class="content">
-<h1 class="title">One last surprise…</h1>
-<div class="count-number" id="suspense">3</div>
-</div>
+<section class="page">
+  <div class="content">
+    <h1 class="title">One last surprise…</h1>
+    <div class="number" id="final">3</div>
+  </div>
 </section>
 
-<!-- PAGE 5 -->
-<section class="page" id="p5">
-<div class="universe" id="universe"></div>
+<!-- PAGE 5 CAKE -->
+<section class="page" id="cakePage">
+  <div class="content">
+    <h1 class="title">Make a wish 🎂</h1>
+    <p>(Click the cake)</p><br>
+    <div class="cake" onclick="goUniverse()">
+      <div class="candle"></div>
+      <div class="flame"></div>
+      <div class="layer l1"></div>
+      <div class="layer l2"></div>
+      <div class="layer l3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 6 UNIVERSE -->
+<section class="page">
+  <div class="content">
+    <h1 class="title">Messages Universe 🌌</h1>
+    <p>Tap a name 💖</p>
+  </div>
 </section>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
-<div class="modal-content">
-<p id="modal-text"></p>
-<button onclick="closeModal()">Close 💖</button>
-</div>
+  <div class="modal-content" id="modalText"></div>
 </div>
 
 <script>
-const pages=[p1,p2,p3,p4,p5];
-const show=i=>{
-pages.forEach(p=>p.classList.remove("active"));
-pages[i].classList.add("active");
-};
+const pages=document.querySelectorAll(".page");
+let p=0;
+function show(i){pages[p].classList.remove("active");p=i;pages[p].classList.add("active")}
+function next(){show(p+1)}
 
-/* COUNTDOWN */
 let c=4;
-setInterval(()=>{
-if(c>=0){
-count.innerText=c--;
-if(c<0){show(1);setTimeout(()=>show(2),2000);}
-}
+let timer=setInterval(()=>{
+  c--;
+  document.getElementById("count").innerText="0"+c;
+  if(c===0){clearInterval(timer);show(1)}
 },1000);
 
-/* QUESTION */
-document.querySelector(".btn-yes").onclick=()=>show(3);
-document.querySelector(".btn-no").onclick=()=>show(3);
+setTimeout(()=>show(2),4000);
 
-/* SUSPENSE */
-let s=3;
-const suspenseTimer=setInterval(()=>{
-suspense.innerText=s--;
-if(s<0){
-clearInterval(suspenseTimer);
-show(4);
-createUniverse();
-}
+let f=3;
+let ft=setInterval(()=>{
+  document.getElementById("final").innerText=f;
+  f--;
+  if(f<0){clearInterval(ft);show(4)}
 },1000);
 
-/* MESSAGE UNIVERSE */
-const messages={
-"Tushar":"Always stay the same crazy supportive human 💙",
-"Niharika":"Your smile makes everything lighter ✨",
-"Vivaan":"Never lose your spark bro 🔥",
-"Chahak":"You bring calm and chaos together 💫",
-"Kunal":"Pure golden heart energy 🧡",
-"Aarya":"Soft soul, strong vibes 🌸",
-"Sanyam":"Silent strength, loud impact 💪"
+function goUniverse(){
+  show(5);
+  createNames();
+}
+
+function createNames(){
+const data={
+"Tushar":"Bro for life 💪",
+"Niharika":"You light every room ✨",
+"Vivaan":"Certified legend 😎",
+"Chahak":"Pure sunshine 🌸",
+"Kunal":"Always got your back 🤍",
+"Aarya":"Never stop smiling 💖",
+"Sanyam":"Calm but deadly cool 😌"
 };
-
-function createUniverse(){
-Object.keys(messages).forEach(name=>{
-const d=document.createElement("div");
-d.className="name";
-d.innerText=name;
-d.style.left=Math.random()*80+"%";
-d.style.top=Math.random()*80+"%";
-d.onclick=()=>openModal(messages[name]);
-universe.appendChild(d);
+Object.keys(data).forEach(n=>{
+  let d=document.createElement("div");
+  d.className="floating-name";
+  d.innerText=n;
+  d.style.left=Math.random()*80+"%";
+  d.style.top=Math.random()*80+"%";
+  d.onclick=()=>showMsg(data[n]);
+  document.body.appendChild(d);
 });
 }
 
-function openModal(text){
-modal.classList.add("show");
-modalText.innerText=text;
-}
-function closeModal(){
-modal.classList.remove("show");
+function showMsg(t){
+  document.getElementById("modal").classList.add("show");
+  document.getElementById("modalText").innerText=t;
+  setTimeout(()=>document.getElementById("modal").classList.remove("show"),3000);
 }
 </script>
 
 </body>
 </html>
-
-
-
-
 
