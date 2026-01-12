@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -12,10 +12,11 @@
 body{
   font-family:Poppins,sans-serif;
   background:radial-gradient(circle at top,#2b1055,#0f0c29);
-  min-height:100vh;
+  height:100vh;
   overflow:hidden;
   color:white;
 }
+
 .page{
   position:fixed;
   inset:0;
@@ -24,18 +25,20 @@ body{
   justify-content:center;
   opacity:0;
   visibility:hidden;
-  transition:1s;
+  transition:.8s;
 }
 .page.active{opacity:1;visibility:visible}
+
 .content{
-  background:rgba(255,255,255,.1);
+  background:rgba(255,255,255,.08);
   backdrop-filter:blur(25px);
   border-radius:30px;
-  padding:3rem 4rem;
+  padding:3rem;
   text-align:center;
   max-width:900px;
   width:90%;
 }
+
 .title{
   font-size:3rem;
   font-weight:800;
@@ -43,64 +46,52 @@ body{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.subtitle{opacity:.8;margin-bottom:1rem}
 
-.number{font-size:8rem;font-weight:800}
-.btn{
-  padding:1rem 2.5rem;
-  border-radius:999px;
-  border:none;
-  font-size:1.2rem;
-  cursor:pointer;
+.number{
+  font-size:8rem;
+  font-weight:800;
 }
-.btn-yes{background:#f5576c;color:white}
-.btn-no{background:#4facfe;color:white}
+
+.btn{
+  margin-top:2rem;
+  padding:1rem 2.5rem;
+  border:none;
+  border-radius:999px;
+  font-size:1.1rem;
+  cursor:pointer;
+  background:linear-gradient(135deg,#f093fb,#f5576c);
+  color:white;
+}
 
 .cake{
-  width:200px;
+  width:180px;
+  height:220px;
   margin:auto;
   cursor:pointer;
 }
-.layer{
-  height:60px;
-  border-radius:15px;
-  margin:8px 0;
-}
+.layer{height:60px;border-radius:15px;margin:10px auto}
 .l1{background:#ff9a9e}
-.l2{background:#fad0c4}
-.l3{background:#fbc2eb}
-.candle{
-  width:10px;
-  height:40px;
-  background:gold;
-  margin:auto;
-}
-.flame{
-  width:20px;
-  height:20px;
-  background:radial-gradient(circle,yellow,red);
-  border-radius:50%;
-  margin:auto;
-  animation:flicker .3s infinite;
-}
-@keyframes flicker{50%{transform:scale(.9)}}
+.l2{background:#fad0c4;width:80%}
+.l3{background:#fbc2eb;width:60%}
 
 .floating-name{
   position:absolute;
-  padding:.8rem 1.5rem;
-  background:rgba(255,255,255,.15);
+  padding:.7rem 1.4rem;
   border-radius:999px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(20px);
+  animation:float 10s infinite linear;
   cursor:pointer;
-  animation:float 10s infinite;
 }
 @keyframes float{
-  50%{transform:translateY(-120px) translateX(80px)}
+  50%{transform:translateY(-120px)}
 }
 
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.85);
+  background:rgba(0,0,0,.7);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -112,40 +103,64 @@ body{
 .modal-content{
   background:linear-gradient(135deg,#667eea,#764ba2);
   padding:2rem;
-  border-radius:25px;
-  max-width:400px;
+  border-radius:20px;
+}
+
+/* FIREWORKS */
+.firework{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  pointer-events:none;
+  animation:explode 1s ease-out forwards;
+}
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y)) scale(0);
+    opacity:0;
+  }
+}
+
+/* GLITTER */
+.glitter{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:radial-gradient(circle,#fff,#ff69b4);
+  border-radius:50%;
+  pointer-events:none;
+  animation:fade .6s forwards;
+}
+@keyframes fade{
+  to{opacity:0;transform:scale(2)}
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
+<!-- PAGES -->
 <section class="page active">
   <div class="content">
-    <h1 class="title">COUNTDOWN ⏳</h1>
+    <h1 class="title">COUNTDOWN</h1>
     <div class="number" id="count">04</div>
   </div>
 </section>
 
-<!-- PAGE 2 -->
 <section class="page">
   <div class="content">
-    <h1 class="title">HAPPY BIRTHDAY 🎉💖</h1>
-    <p>You survived another year 😌</p>
+    <h1 class="title">HAPPY BIRTHDAY 🎉</h1>
   </div>
 </section>
 
-<!-- PAGE 3 -->
 <section class="page">
   <div class="content">
-    <h1 class="title">Did you enjoy it?</h1><br>
-    <button class="btn btn-yes" onclick="next()">YES 💖</button>
-    <button class="btn btn-no" onclick="next()">NO 🙈</button>
+    <h1 class="title">Did you enjoy it?</h1>
+    <button class="btn" onclick="next()">YES 💖</button>
   </div>
 </section>
 
-<!-- PAGE 4 -->
 <section class="page">
   <div class="content">
     <h1 class="title">One last surprise…</h1>
@@ -153,26 +168,20 @@ body{
   </div>
 </section>
 
-<!-- PAGE 5 CAKE -->
-<section class="page" id="cakePage">
+<section class="page">
   <div class="content">
     <h1 class="title">Make a wish 🎂</h1>
-    <p>(Click the cake)</p><br>
     <div class="cake" onclick="goUniverse()">
-      <div class="candle"></div>
-      <div class="flame"></div>
-      <div class="layer l1"></div>
-      <div class="layer l2"></div>
       <div class="layer l3"></div>
+      <div class="layer l2"></div>
+      <div class="layer l1"></div>
     </div>
   </div>
 </section>
 
-<!-- PAGE 6 UNIVERSE -->
 <section class="page">
   <div class="content">
-    <h1 class="title">Messages Universe 🌌</h1>
-    <p>Tap a name 💖</p>
+    <h1 class="title">Message Universe 💖</h1>
   </div>
 </section>
 
@@ -183,59 +192,98 @@ body{
 
 <script>
 const pages=document.querySelectorAll(".page");
-let p=0;
-function show(i){pages[p].classList.remove("active");p=i;pages[p].classList.add("active")}
-function next(){show(p+1)}
+let current=0;
+function show(i){
+  pages[current].classList.remove("active");
+  current=i;
+  pages[current].classList.add("active");
+}
+function next(){show(current+1)}
 
+/* Countdown */
 let c=4;
-let timer=setInterval(()=>{
+const ce=document.getElementById("count");
+const cd=setInterval(()=>{
   c--;
-  document.getElementById("count").innerText="0"+c;
-  if(c===0){clearInterval(timer);show(1)}
+  ce.innerText="0"+c;
+  if(c===0){clearInterval(cd);setTimeout(()=>show(1),500)}
 },1000);
 
-setTimeout(()=>show(2),4000);
+/* Auto flow */
+setTimeout(()=>show(2),4500);
 
+/* Suspense */
 let f=3;
-let ft=setInterval(()=>{
-  document.getElementById("final").innerText=f;
+const fe=document.getElementById("final");
+const sc=setInterval(()=>{
+  fe.innerText=f;
+  if(f===0){clearInterval(sc);setTimeout(()=>show(4),700)}
   f--;
-  if(f<0){clearInterval(ft);show(4)}
 },1000);
 
+/* Universe */
 function goUniverse(){
   show(5);
   createNames();
+  setInterval(fireworkBurst,1200);
 }
 
-function createNames(){
-const data={
-"Tushar":"Bro for life 💪",
-"Niharika":"You light every room ✨",
-"Vivaan":"Certified legend 😎",
-"Chahak":"Pure sunshine 🌸",
-"Kunal":"Always got your back 🤍",
-"Aarya":"Never stop smiling 💖",
-"Sanyam":"Calm but deadly cool 😌"
+/* Messages */
+const msgs={
+  Tushar:"Bro forever 💪",
+  Niharika:"Pure warmth ✨",
+  Vivaan:"Main character 😎",
+  Chahak:"Sunshine 🌸",
+  Kunal:"Always real 🤍",
+  Aarya:"Smile queen 💖",
+  Sanyam:"Silent strength 😌"
 };
-Object.keys(data).forEach(n=>{
-  let d=document.createElement("div");
-  d.className="floating-name";
-  d.innerText=n;
-  d.style.left=Math.random()*80+"%";
-  d.style.top=Math.random()*80+"%";
-  d.onclick=()=>showMsg(data[n]);
-  document.body.appendChild(d);
-});
+
+function createNames(){
+  Object.keys(msgs).forEach(n=>{
+    let d=document.createElement("div");
+    d.className="floating-name";
+    d.innerText=n;
+    d.style.left=Math.random()*80+"%";
+    d.style.top=Math.random()*80+"%";
+    d.onclick=()=>showMsg(msgs[n]);
+    document.body.appendChild(d);
+  });
 }
 
 function showMsg(t){
-  document.getElementById("modal").classList.add("show");
-  document.getElementById("modalText").innerText=t;
-  setTimeout(()=>document.getElementById("modal").classList.remove("show"),3000);
+  modal.classList.add("show");
+  modalText.innerText=t;
+  setTimeout(()=>modal.classList.remove("show"),2500);
 }
+
+/* FIREWORKS */
+function fireworkBurst(){
+  for(let i=0;i<20;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"%";
+    f.style.top=Math.random()*100+"%";
+    f.style.background=`hsl(${Math.random()*360},100%,70%)`;
+    f.style.setProperty("--x",(Math.random()*200-100)+"px");
+    f.style.setProperty("--y",(Math.random()*200-100)+"px");
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+}
+
+/* GLITTER CURSOR */
+document.addEventListener("mousemove",e=>{
+  let g=document.createElement("div");
+  g.className="glitter";
+  g.style.left=e.clientX+"px";
+  g.style.top=e.clientY+"px";
+  document.body.appendChild(g);
+  setTimeout(()=>g.remove(),600);
+});
 </script>
 
 </body>
 </html>
+
 
