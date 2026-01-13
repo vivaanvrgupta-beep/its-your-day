@@ -873,6 +873,9 @@
         display: none;
         backdrop-filter: blur(10px);
       }
+      .no {
+        position: absolute;
+      }
     </style>
   </head>
   <body>
@@ -1175,6 +1178,26 @@
           container.appendChild(star);
         }
       }
+      const noBtn = document.querySelector(".no");
+
+      noBtn.addEventListener("mouseenter", () => {
+        const padding = 20;
+
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+
+        const maxX = window.innerWidth - btnWidth - padding - 200;
+        const maxY = window.innerHeight - btnHeight - padding - 200;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+      });
+      noBtn.addEventListener("touchstart", () => {
+        noBtn.dispatchEvent(new Event("mouseenter"));
+      });
 
       function spawnNames() {
         const wishers = {
@@ -1426,23 +1449,23 @@
         }
       });
 
-      document.querySelectorAll("button").forEach((button) => {
-        button.addEventListener("mouseenter", function () {
-          this.style.transform = "translateY(-8px) scale(1.05)";
-        });
+      // document.querySelectorAll("button").forEach((button) => {
+      //   button.addEventListener("mouseenter", function () {
+      //     this.style.transform = "translateY(-8px) scale(1.05)";
+      //   });
 
-        button.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(0) scale(1)";
-        });
+      //   button.addEventListener("mouseleave", function () {
+      //     this.style.transform = "translateY(0) scale(1)";
+      //   });
 
-        button.addEventListener("mousedown", function () {
-          this.style.transform = "translateY(2px) scale(0.98)";
-        });
+      //   button.addEventListener("mousedown", function () {
+      //     this.style.transform = "translateY(2px) scale(0.98)";
+      //   });
 
-        button.addEventListener("mouseup", function () {
-          this.style.transform = "translateY(-8px) scale(1.05)";
-        });
-      });
+      //   button.addEventListener("mouseup", function () {
+      //     this.style.transform = "translateY(-8px) scale(1.05)";
+      //   });
+      // });
 
       createParticles();
 
