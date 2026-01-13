@@ -198,7 +198,7 @@
         background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
         background-size: 200% 100%;
         border-radius: 999px;
-        animation: loadProgress 4s linear forwards, shimmer 2s linear infinite;
+        animation: loadProgress 21s linear forwards, shimmer 2s linear infinite;
         box-shadow: 0 0 20px rgba(255, 154, 158, 0.6);
       }
 
@@ -873,6 +873,20 @@
         display: none;
         backdrop-filter: blur(10px);
       }
+
+      #name{
+          position: fixed;
+        bottom:  20px;
+        right: 20px;
+        font-size: 1rem;
+        font-weight: normal;
+        color: white;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 0.6rem 1rem;
+        border-radius: 999px;
+        z-index: 2000;
+        backdrop-filter: blur(10px);
+      }
       .no {
         position: absolute;
       }
@@ -886,7 +900,7 @@
     <div class="page active" id="p0">
       <div class="card">
         <h1 class="gradient-text">Countdown 🐼</h1>
-        <div class="big glow-text" id="count">4</div>
+        <div class="big glow-text" id="count">21</div>
         <div class="loading-bar">
           <div class="loading-progress"></div>
         </div>
@@ -987,6 +1001,7 @@
     <!-- Timer Counter (top left) -->
     <div id="wishCounter">6</div>
 
+    <p id="name" >Created by - Vivaan</p>
     <script>
       // Create stars background
       const starsContainer = document.getElementById("starsContainer");
@@ -1039,7 +1054,7 @@
       }
 
       // STEP 1: Initial countdown (4 to 0)
-      let countdown = 4;
+      let countdown = 21;
       const countElement = document.getElementById("count");
       const countInterval = setInterval(() => {
         countdown--;
@@ -1126,13 +1141,13 @@
           setTimeout(() => hint.remove(), 5000);
         }, 1200);
 
-        // Start 20 second countdown
+        // Start 60 second countdown
         startUniverseTimer();
       }
 
       // STEP 4: Universe with 20 second timer
       function startUniverseTimer() {
-        let timeLeft = 20;
+        let timeLeft = 60;
         const counter = document.getElementById("wishCounter");
         counter.innerText = timeLeft;
         counter.style.display = "block";
@@ -1163,7 +1178,10 @@
       }
 
       function handleNo() {
-        showPopup("💖", "You are deeply loved. Always.");
+        showPopup(
+          "💖",
+          "You are deeply loved. Always. \n\n created by - Vivaan"
+        );
       }
 
       function createUniverseStars() {
@@ -1292,7 +1310,7 @@
       and I’m lucky to have you as my friend.
       Hope all your dreams
       slowly turn into reality ✨`,
-
+          Ramanand: "happy bithday!!!!",
           Sanyam: `Happy Birthday, my best friend 🤍
       Some people come into your life
       and change it quietly — that’s you.
